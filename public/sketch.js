@@ -452,8 +452,9 @@ function setup() {
   taskWheel = new TaskWheel(centerX, centerY, 150);
   attentionPointer = new AttentionPointer(centerX, centerY);
 
-  // **连接 WebSocket 服务器**
-  socket = new WebSocket(`ws://${window.location.host}`);
+  let protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+  socket = new WebSocket(`${protocol}${window.location.host}`);
+
 
   socket.onopen = function () {
     console.log("Connected to WebSocket server");
