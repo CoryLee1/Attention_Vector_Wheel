@@ -1,4 +1,6 @@
-let socket;
+let protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+let socket = new WebSocket(`${protocol}${window.location.host}`);
+
 class AttentionPointer {
   constructor(centerX, centerY) {
     this.centerX = centerX;
